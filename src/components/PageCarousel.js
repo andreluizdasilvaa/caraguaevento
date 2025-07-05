@@ -34,8 +34,11 @@ export default function PageCarousel({ data, width, scrollTo, isLastPage }) {
                 <MaterialIcons name="keyboard-arrow-right" size={24} color="black" />
             </TouchableOpacity>
         ) : (
-            <TouchableOpacity onPress={() => finishOnboarding()}>
-                <Text style={[styles.textButtonNext, { textDecorationLine: 'underline'}]}>Acessar</Text>
+            <TouchableOpacity 
+              onPress={() => finishOnboarding()}
+              style={styles.buttonAcess}
+            >
+                <Text style={[styles.textButtonAcess]}>Acessar</Text>
             </TouchableOpacity>
         )}
       </View>
@@ -94,5 +97,18 @@ const styles = StyleSheet.create({
   textButtonNext: {
     fontSize: 16,
     fontWeight: 'bold'
+  },
+  buttonAcess: {
+    backgroundColor: '#000',
+    borderRadius: 24,
+    paddingHorizontal: 40,
+    paddingVertical: 12,
+    alignItems: 'center',
+  },
+  textButtonAcess: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
   }
 });

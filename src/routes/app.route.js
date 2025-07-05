@@ -4,36 +4,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Feather from 'react-native-vector-icons/Feather'
 
 import Login from "../pages/login";
-import Register from "../pages/register";
+import register_business from "../pages/register_business";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function StackRoutes() {
-    return (
-        <Stack.Navigator
-            initialRouteName="Login"
-        >
-            <Stack.Screen 
-                name="Login"
-                component={Login}
-                options={{
-                    headerShown: false
-                }}
-            />
-
-            <Stack.Screen 
-                name="Register"
-                component={Register}
-                options={{
-                    headerShown: false
-                }}
-            />
-        </Stack.Navigator>
-    )
-}
-
-function Routes() {
+function TabRoutes() {
     return (
         <Tab.Navigator
             screenOptions={{
@@ -60,6 +36,39 @@ function Routes() {
             />
 
         </Tab.Navigator>
+    )
+}
+
+function Routes() {
+    return (
+        <Stack.Navigator
+            initialRouteName="Login"
+        >
+            <Stack.Screen 
+                name="Login"
+                component={Login}
+                options={{
+                    headerShown: false
+                }}
+            />
+
+            <Stack.Screen 
+                name="RegisterBusiness"
+                component={register_business}
+                options={{
+                    headerShown: false
+                }}
+            />
+
+            <Stack.Screen
+                name="Home"
+                component={TabRoutes}
+                options={{
+                    headerShown: false
+                }}
+            />
+
+        </Stack.Navigator>
     )
 }
 
