@@ -7,6 +7,7 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
+    ScrollView,
     FlatList
 } from 'react-native';
 import { StatusBar } from "expo-status-bar";
@@ -26,85 +27,88 @@ export default function Home() {
             style={styles.backgroundImage}
             resizeMode="cover"
         > 
-        
-            <SafeAreaView style={styles.header}>
-                <View 
-                    style={{ 
-                        width: '100%',
-                        flexDirection: 'row', 
-                        alignItems: 'center', 
-                        justifyContent: 'space-between' 
-                    }}
-                >
-                    <View 
-                        style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
-                    >
-                        <Image 
-                            source={require('../../assets/Logo.png')}
-                            style={{ width: 50, height: 50 }}
-                        />
-                        <Text style={styles.TextLogo}>CaraguáEventos</Text>
-                    </View>
-
-                    <TouchableOpacity onPress={() => navigate.navigate('Notify')}>
-                        <Ionicons name="notifications-outline" size={40} color="black" />
-                    </TouchableOpacity>
-                </View>
-
-                <View style={styles.containerInput}>
-
-                    <View style={styles.contentInput}>
-
-                        <TouchableOpacity>
-                            <FontAwesome5 name="search" size={24} color="black" />
-                        </TouchableOpacity>
-
-                        <TextInput
-                            placeholder="Pesquisar Evento..."
-                            style={styles.inputSearch}
-                            maxLength={190}
-                        />
-                    </View>
-                    
-                </View>
-            </SafeAreaView>
-
-            <View style={styles.content}>
-                <View style={{ flexDirection: 'column', gap: 6 }}>
-
-                    <TouchableOpacity 
-                        style={{ 
-                            backgroundColor: '#FBFEF9', 
-                            paddingVertical: 6, 
-                            paddingHorizontal: 12, 
-                            alignSelf: 'flex-start',
-                            borderRadius: 24,
-                            elevation: 5
-                        }}
-                    >
-                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#313B72'}}>Tabela de Filtros</Text>
-                    </TouchableOpacity>
-
+            <ScrollView>
+                <SafeAreaView style={styles.header}>
                     <View 
                         style={{ 
+                            width: '100%',
                             flexDirection: 'row', 
-                            width: '100%', 
-                            justifyContent: 'space-between',
-                            alignItems: 'center'
+                            alignItems: 'center', 
+                            justifyContent: 'space-between' 
                         }}
-                     >
-                        <Text style={{ fontSize: 24, fontWeight: 'bold'}}>Principais Eventos</Text>
+                    >
+                        <View 
+                            style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
+                        >
+                            <Image 
+                                source={require('../../assets/Logo.png')}
+                                style={{ width: 50, height: 50 }}
+                            />
+                            <Text style={styles.TextLogo}>CaraguáEventos</Text>
+                        </View>
 
-                        <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text>Data de edição</Text>
-                            <MaterialIcons name="arrow-drop-down" size={24} color="black" />
+                        <TouchableOpacity onPress={() => navigate.navigate('Notify')}>
+                            <Ionicons name="notifications-outline" size={40} color="black" />
                         </TouchableOpacity>
                     </View>
+
+                    <View style={styles.containerInput}>
+
+                        <View style={styles.contentInput}>
+
+                            <TouchableOpacity>
+                                <FontAwesome5 name="search" size={24} color="black" />
+                            </TouchableOpacity>
+
+                            <TextInput
+                                placeholder="Pesquisar Evento..."
+                                style={styles.inputSearch}
+                                maxLength={190}
+                            />
+
+                        </View>
+                        
+                    </View>
+                </SafeAreaView>
+
+                <View style={styles.content}>
+                    <View style={{ flexDirection: 'column', gap: 6 }}>
+
+                        <TouchableOpacity 
+                            style={{ 
+                                backgroundColor: '#FBFEF9', 
+                                paddingVertical: 6, 
+                                paddingHorizontal: 12, 
+                                alignSelf: 'flex-start',
+                                borderRadius: 24,
+                                elevation: 5
+                            }}
+                        >
+                            <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#313B72'}}>Tabela de Filtros</Text>
+                        </TouchableOpacity>
+
+                        <View 
+                            style={{ 
+                                flexDirection: 'row', 
+                                width: '100%', 
+                                justifyContent: 'space-between',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <Text style={{ fontSize: 24, fontWeight: 'bold'}}>Principais Eventos</Text>
+
+                            <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <Text>Data de edição</Text>
+                                <MaterialIcons name="arrow-drop-down" size={24} color="black" />
+                            </TouchableOpacity>
+                        </View>
+                        
+                    </View>
+
+                        <CardEvento />
                 </View>
 
-                    <CardEvento />
-            </View>
-
+            </ScrollView>
             <StatusBar style="auto" />
         </ImageBackground>
     ) 
