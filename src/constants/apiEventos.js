@@ -83,7 +83,7 @@ export default [
         id: 6,
         title: "Semana do Meio Ambiente",
         date: {
-            inicio: "29/07",
+            inicio: "06/07",
             fim: "02/08"
         },
         areInterested: false,
@@ -94,5 +94,21 @@ export default [
             name: "Secretaria do Meio Ambiente",
             avatar: require('../assets/prefeitura.jpg')
         }
-    }
+    },
+    {
+        id: 7,
+        title: "Semana do Meio Ambiente",
+        date: {
+            inicio: "06/07",
+            fim: "02/08"
+        },
+        areInterested: false,
+        image: require('../assets/example_festa-da-tainha.jpg'),
+        description: "Palestras, trilhas ecológicas e oficinas educativas em vários pontos da cidade.",
+        tags: ["Ambiental", "Educacional"],
+        organizer: {
+            name: "Secretaria do Meio Ambiente",
+            avatar: require('../assets/prefeitura.jpg')
+        }
+    },
 ]

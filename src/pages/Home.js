@@ -13,6 +13,7 @@ import {
     Switch
 } from 'react-native';
 import { StatusBar } from "expo-status-bar";
+import dropdownData from '../constants/Neighborhoods'
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -50,38 +51,9 @@ export default function Home() {
     });
 
     const [isSwitchEnabled, setIsSwitchEnabled] = useState(false);
+    const [isAccessibilityEnabled, setIsAccessibilityEnabled] = useState(false);
 
     const toggleSwitch = () => setIsSwitchEnabled((previousState) => !previousState);
-
-    const dropdownData = [
-        { label: 'Balneário Califórnia', value: 'balneario-california' },
-        { label: 'Balneário dos Golfinhos', value: 'balneario-dos-golfinhos' },
-        { label: 'Barranco Alto', value: 'barranco-alto' },
-        { label: 'Capricórnio I', value: 'capricornio-1' },
-        { label: 'Capricórnio II', value: 'capricornio-2' },
-        { label: 'Capricórnio III', value: 'capricornio-3' },
-        { label: 'Caputera', value: 'caputera' },
-        { label: 'Centro', value: 'centro' },
-        { label: 'Cidade Jardim', value: 'cidade-jardim' },
-        { label: 'Indaiá', value: 'indaia' },
-        { label: 'Jardim Britânia', value: 'jardim-britania' },
-        { label: 'Jardim Gaivotas', value: 'jardim-gaivotas' },
-        { label: 'Jaraguazinho', value: 'jaraguazinho' },
-        { label: 'Martim de Sá', value: 'martim-de-sa' },
-        { label: 'Massaguaçu', value: 'massaguacu' },
-        { label: 'Morro do Algodão', value: 'morro-do-algodao' },
-        { label: 'Perequê-Mirim', value: 'pereque-mirim' },
-        { label: 'Poiares', value: 'poiares' },
-        { label: 'Porto Novo', value: 'porto-novo' },
-        { label: 'Praia das Palmeiras', value: 'praia-das-palmeiras' },
-        { label: 'Prainha', value: 'prainha' },
-        { label: 'Sumaré', value: 'sumare' },
-        { label: 'Tinga', value: 'tinga' },
-        { label: 'Travessão', value: 'travessao' },
-        { label: 'Vila Atlântica', value: 'vila-atlantica' },
-        { label: 'Vila Ponte Seca', value: 'vila-ponte-seca' },
-        { label: 'Verde Mar', value: 'verde-mar' },
-      ];
 
     const toggleFilter = (filter) => {
         setSelectedFilters((prevState) => ({
@@ -112,6 +84,7 @@ export default function Home() {
 
         setDropdownValue(null);
         setIsSwitchEnabled(false);
+        setIsAccessibilityEnabled(false);
 
         setAccessibilityFilters({
             Visual: false,
@@ -258,8 +231,9 @@ export default function Home() {
                                         <View key={filter} style={styles.checkboxContainer}>
                                             <Checkbox
                                                 value={accessibilityFilters[filter]} // Define o valor do checkbox com base no estado
-                                                onValueChange={() => toggleAccessibilityFilter(filter)} // Atualiza o estado ao clicar
+                                                onValueChange={() => isSwitchEnabled && toggleAccessibilityFilter(filter)} // Atualiza o estado ao clicar apenas se o Switch estiver ativado
                                                 color={accessibilityFilters[filter] ? '#313B72' : undefined} // Cor do checkbox quando marcado
+                                                disabled={!isSwitchEnabled} // Desabilita o checkbox se o Switch estiver desativado
                                             />
                                             <Text style={styles.checkboxLabel}>{filter}</Text>
                                         </View>
@@ -268,7 +242,13 @@ export default function Home() {
                             </View>
                             <View style={styles.Line} />
                     
-                            {/* Aqui */}
+                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                                <Switch
+                                    value={isAccessibilityEnabled}
+                                    onValueChange={(value) => setIsAccessibilityEnabled(value)}
+                                />
+                                <Text>Possui acessibilidade?</Text>
+                            </View>
 
                         </View>
                     </View>
