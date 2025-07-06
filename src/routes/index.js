@@ -9,11 +9,7 @@ export default function Routes() {
     const { onboarding, loading } = useContext(AuthContext);
 
     if(loading) {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <ActivityIndicator size="large" color="#00A5CF" />
-            </View>
-        )
+        return null;
     }
 
     if(!onboarding) return <OnBoarding />

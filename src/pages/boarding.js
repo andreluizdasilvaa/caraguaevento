@@ -4,6 +4,7 @@ import { useWindowDimensions, FlatList, Animated, View } from "react-native";
 import Paginator from "../components/Paginator";
 import PageCarousel from "../components/PageCarousel";  
 import OnBoardingTexts from "../constants/OnBoardingTexts";
+import { StatusBar } from "expo-status-bar";
 
 // Componente para animar cada slide
 function OnboardingSlide({ width, isActive, children }) {
@@ -83,6 +84,7 @@ export default function Carousel() {
                 )}
             />
             <Paginator data={OnBoardingTexts} scrollX={scrollX} />
+            <StatusBar hidden />
         </View>
     );
 };

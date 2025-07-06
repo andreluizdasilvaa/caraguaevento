@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from "reac
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 
 export default function Login() {
     const navigation = useNavigation();
@@ -12,7 +13,6 @@ export default function Login() {
 
             <View style={styles.header}>
                 <TouchableOpacity 
-                    style={{  }} 
                     onPress={() => navigation.goBack()}
                 >
                     <Ionicons name="return-up-back-outline" size={40} color="black" />
@@ -72,7 +72,7 @@ export default function Login() {
                     <Text style={styles.textButtonDefault}>Cadastrar</Text>
                 </TouchableOpacity>
             </View>
-
+            <StatusBar style="auto" />
         </SafeAreaView>
     )
 }

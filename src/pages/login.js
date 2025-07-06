@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from '@react-navigation/native';	
@@ -33,7 +34,11 @@ export default function Login() {
             />
             <Text style={styles.TextLogo}>CaraguáEventos</Text>
 
-            <View style={styles.containerInput}>
+            <KeyboardAvoidingView 
+                style={styles.containerInput}
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0}
+            >
                 {isRegister ? (
                     <TextInput 
                         style={styles.inputDefault}
@@ -61,7 +66,7 @@ export default function Login() {
                 <TouchableOpacity style={styles.buttonDefault}>
                     <Text style={styles.textButtonDefault}>Entrar</Text>
                 </TouchableOpacity>
-            </View>
+            </KeyboardAvoidingView>
 
             <View style={styles.contentLineDot}>
                 <View style={styles.line}/>
@@ -83,6 +88,7 @@ export default function Login() {
                     </Text>
                 </TouchableOpacity>
             </View>
+            <StatusBar style="auto" />
         </SafeAreaView>
     )
 }
@@ -92,13 +98,13 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         alignItems: "center",
+        justifyContent: 'center',
         backgroundColor: '#ffffff',
     },
     logo: {
         width: 200,
         height: 200,
         alignSelf: "center",
-        marginTop: 100,
     },
     TextLogo: {
         fontSize: 24,
