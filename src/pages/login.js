@@ -16,17 +16,26 @@ export default function Login() {
         setIsRegister(true);
     }
 
+    function handleGoBack() {
+        if(isRegister === true) {
+            setIsRegister(false);
+        } else {
+            navigation.reset({
+                index: 0, // Reset the navigation stack
+                routes: [{ name: 'MainHome' }] // Navigate to Home screen
+            }) // Navigate back to the previous screen
+        }
+    }
+
     return (
         <SafeAreaView style={styles.container}>
 
-            {isRegister ? (
-                <TouchableOpacity 
-                    style={{ position: 'absolute', top: 20, left: 20, paddingTop: 10 }} 
-                    onPress={() => setIsRegister(false)}
-                >
-                    <Ionicons name="return-up-back-outline" size={40} color="black" />
-                </TouchableOpacity>
-            ) : null}
+            <TouchableOpacity 
+                style={{ position: 'absolute', top: 20, left: 20, paddingTop: 10 }} 
+                onPress={() => handleGoBack()}
+            >
+                <Ionicons name="return-up-back-outline" size={40} color="black" />
+            </TouchableOpacity>
 
             <Image
                 source={require("../../assets/Logo.png")}
@@ -64,7 +73,7 @@ export default function Login() {
                 ) : null}
 
                 <TouchableOpacity style={styles.buttonDefault}>
-                    <Text style={styles.textButtonDefault}>Entrar</Text>
+                    <Text style={styles.textButtonDefault}>{isRegister ? 'Cadastrar' : 'Entrar' }</Text>
                 </TouchableOpacity>
             </KeyboardAvoidingView>
 

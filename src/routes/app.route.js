@@ -8,7 +8,7 @@ import Login from "../pages/login";
 import register_business from "../pages/register_business";
 
 import Home from "../pages/Home";
-import Calendar from "../pages/Calendar";
+import Calendario from "../pages/Calendar";
 import Perfil from "../pages/Perfil";
 
 import Notify from "../pages/Notify";
@@ -28,9 +28,10 @@ function TabRoutes() {
                 tabBarInactiveTintColor: '#ccc',
                 tabBarStyle: {
                     backgroundColor: '#fff',
-                    borderTopWidth: 0,
+                    borderTopWidth: 1,
                     elevation: 5,
                     shadowOpacity: 0,
+                    borderTopColor: '#ccc'
                 },
                 tabBarButton: (props) => (
                     <TouchableOpacity
@@ -54,7 +55,7 @@ function TabRoutes() {
 
             <Tab.Screen
                 name="Calendar"
-                component={Calendar}
+                component={Calendario}
                 options={{
                     tabBarIcon: ({ color, size }) => {
                         return <Feather name="calendar" size={size} color={color} />
@@ -89,11 +90,11 @@ function TabRoutes() {
 function Routes() {
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="MainHome"
         >
 
             <Stack.Screen
-                name="Home"
+                name="MainHome"
                 component={TabRoutes}
                 options={{
                     headerShown: false

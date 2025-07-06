@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
-    const [user, setUser] = useState();
+    const [user, setUser] = useState('andré');
     const [loading, setLoading] = useState(true);
     const [onboarding, setOnboarding] = useState(false);
 
